@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play / Pause Music</title>
+<style>
+  /* Tombol di pojok kiri atas */
+  #playBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 48px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #333;
+    z-index: 9999;
+  }
+  #playBtn:focus { outline: none; }
+  body { margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- Tombol Play/Pause -->
+<button id="playBtn" aria-label="Play music">▶</button>
+
+<!-- Audio -->
+<audio id="bgAudio" src="D:/Undangan/music/pernikahan.mp3" loop></audio>
+
+<script>
+  const btn   = document.getElementById('playBtn');
+  const audio = document.getElementById('bgAudio');
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(()=>{});   // mulai musik
+      btn.textContent = 'II';       // ubah ke ikon pause
+    } else {
+      audio.pause();               // jeda musik
+      btn.textContent = '▶';       // ubah ke ikon play
+    }
+  });
+</script>
+
+</body>
+</html>
