@@ -3,91 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Pernikahan 2 Tumpuk</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<title>Undangan Pernikahan</title>
+
 <style>
-  /* ===== Lapisan bawah (cover tetap) ===== */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:url('1_20250817_094714_0000.png') center/cover no-repeat;
-    z-index:-1;
-  }
+/* ===== CSS ===== */
+* {margin:0;padding:0;box-sizing:border-box;}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #591E1F;
+  overflow-x: hidden;
+}
 
-  /* ===== Lapisan atas ===== */
-  section{
-    min-height:100vh;             /* 1 layar penuh ~1920x1080 */
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-  }
-  .overlay{
-    background:rgba(255,255,255,0.65);
-    padding:2rem;
-    border-radius:1rem;
-    text-align:center;
-    max-width:90%;
-  }
+section.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
 
-  /* ===== Animasi fade-up ===== */
-  .fade-up{
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 1s ease;
-  }
-  .fade-up.show{
-    opacity:1;
-    transform:translateY(0);
-  }
+section .content {
+  /* kotak abu-abu dihapus, hanya teks */
+  padding: 20px;
+}
 
-  .vintage-text{font-family:'Dancing Script',cursive;color:#8b5a3c;}
+/* Animasi fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
 
-<!-- ===== Beberapa section di atas cover ===== -->
-<section style="background-image:url('1_20250817_094714_0000.png')">
-  <div class="overlay fade-up">
-    <h1 class="vintage-text text-4xl mb-4">Undangan Pernikahan</h1>
-    <p>Ahmad Rahman &amp; Siti Nurhaliza</p>
-    <p>Minggu, 15 Juni 2025</p>
+<!-- ===== Isi Undangan ===== -->
+<section class="hero" style="background-image:url('D:/Undangan/penikahan/1.png');">
+  <div class="content fade-up">
+    <h1>The Wedding of</h1>
+    <br></br>
+    <h1>Ana</h1> 
+    <h1>&</h1> 
+    <h1>Andi</h1>
+    <p>01. 01. 2025</p>
   </div>
 </section>
 
-<section style="background-image:url('1_20250817_094714_0000.png')">
-  <div class="overlay fade-up">
-    <h2 class="text-3xl vintage-text mb-2">Cerita Cinta</h2>
-    <p>Kami bertemu di taman kota dan memulai kisah indah hingga hari ini.</p>
+<section class="hero" style="background-image:url('D:/Undangan/penikahan/2.png');">
+  <div class="content fade-up">
+    <h2>Acara Resepsi</h2>
+    <p>Gedung Harmoni – 19.00 WIB</p>
   </div>
 </section>
 
-<section style="background-image:url('bg3.jpg')">
-  <div class="overlay fade-up">
-    <h2 class="text-3xl vintage-text mb-2">Akad &amp; Resepsi</h2>
-    <p>Akad: Jumat, 14 Juni 2025 – Masjid Agung</p>
-    <p>Resepsi: Minggu, 15 Juni 2025 – Hotel Grand Vintage</p>
+<section class="hero" style="background-image:url('images/bg3.jpg');">
+  <div class="content fade-up">
+    <h2>Lokasi</h2>
+    <p>Jl. Merpati No. 12, Jakarta</p>
   </div>
 </section>
-
-<footer class="text-center p-6 bg-white/70">
-  <p class="vintage-text">Terima kasih atas doa dan kehadirannya</p>
-</footer>
 
 <script>
-/* ===== Fade-up on scroll ===== */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('show'); }
+/* ===== JS ===== */
+// Animasi muncul setiap kali elemen masuk viewport, baik scroll turun atau naik
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
   });
-},{threshold:0.2});
+}, { threshold: 0.2 });
 
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
