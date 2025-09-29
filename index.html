@@ -3,45 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Play / Pause Music</title>
+<title>Undangan Pernikahan 2 Tumpuk</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-  /* Tombol di pojok kiri atas */
-  #playBtn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 48px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: #333;
-    z-index: 9999;
+  /* ===== Lapisan bawah (cover tetap) ===== */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('1_20250817_094714_0000.png') center/cover no-repeat;
+    z-index:-1;
   }
-  #playBtn:focus { outline: none; }
-  body { margin: 0; }
+
+  /* ===== Lapisan atas ===== */
+  section{
+    min-height:100vh;             /* 1 layar penuh ~1920x1080 */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+  .overlay{
+    background:rgba(255,255,255,0.65);
+    padding:2rem;
+    border-radius:1rem;
+    text-align:center;
+    max-width:90%;
+  }
+
+  /* ===== Animasi fade-up ===== */
+  .fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
+  }
+  .fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .vintage-text{font-family:'Dancing Script',cursive;color:#8b5a3c;}
 </style>
 </head>
 <body>
 
-<!-- Tombol Play/Pause -->
-<button id="playBtn" aria-label="Play music">▶</button>
+<!-- ===== Beberapa section di atas cover ===== -->
+<section style="background-image:url('1_20250817_094714_0000.png')">
+  <div class="overlay fade-up">
+    <h1 class="vintage-text text-4xl mb-4">Undangan Pernikahan</h1>
+    <p>Ahmad Rahman &amp; Siti Nurhaliza</p>
+    <p>Minggu, 15 Juni 2025</p>
+  </div>
+</section>
 
-<!-- Audio -->
-<audio id="bgAudio" src="D:/Undangan/music/pernikahan.mp3" loop></audio>
+<section style="background-image:url('1_20250817_094714_0000.png')">
+  <div class="overlay fade-up">
+    <h2 class="text-3xl vintage-text mb-2">Cerita Cinta</h2>
+    <p>Kami bertemu di taman kota dan memulai kisah indah hingga hari ini.</p>
+  </div>
+</section>
+
+<section style="background-image:url('bg3.jpg')">
+  <div class="overlay fade-up">
+    <h2 class="text-3xl vintage-text mb-2">Akad &amp; Resepsi</h2>
+    <p>Akad: Jumat, 14 Juni 2025 – Masjid Agung</p>
+    <p>Resepsi: Minggu, 15 Juni 2025 – Hotel Grand Vintage</p>
+  </div>
+</section>
+
+<footer class="text-center p-6 bg-white/70">
+  <p class="vintage-text">Terima kasih atas doa dan kehadirannya</p>
+</footer>
 
 <script>
-  const btn   = document.getElementById('playBtn');
-  const audio = document.getElementById('bgAudio');
-
-  btn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play().catch(()=>{});   // mulai musik
-      btn.textContent = 'II';       // ubah ke ikon pause
-    } else {
-      audio.pause();               // jeda musik
-      btn.textContent = '▶';       // ubah ke ikon play
-    }
+/* ===== Fade-up on scroll ===== */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('show'); }
   });
+},{threshold:0.2});
+
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 
 </body>
