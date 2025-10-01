@@ -12,19 +12,29 @@ body {
   font-family: 'Lora', Lora;
   color: #591E1F;
   overflow-x: hidden;
+  background-color: #733A30;  /* Warna belakang seluruh layar */
 }
 
 .hero {
-  width:100%;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;   /* default: dari atas */
-  text-align:center;
-  background-size:cover;
-  background-position:center;
-  padding-top:60px;         /* jarak aman */
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Tinggi penuh layar HP */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; /* gambar utuh */
+  
+  display: flex;
+  align-items: center;   /* Vertikal tengah */
+  justify-content: center; /* Horizontal tengah */
+  text-align: center;
+
+  max-width: 600px;  /* Batas lebar teks */
+  margin: 0 auto;    /* Biar tetap ditengah */
+  padding: 160px;     /* Batas kiri dn kanan */
 }
+
+
+
 
 /* hero pertama khusus tengah */
 .hero-center {
@@ -50,7 +60,7 @@ body {
 
 
 .cover.hero h1 {
-  font-size: 40px;
+  font-size: 37px;
   font-family: 'Lora', serif;
   font-weight: bold;
   margin-bottom: 50px;
@@ -58,7 +68,7 @@ body {
 }
 /* Cover khusus */
 .cover.hero h2 {
-  font-size: 19px;
+  font-size: 15px;
   font-family: 'Lora', serif;
   font-weight: normal;
   margin-bottom: 10px;
@@ -74,17 +84,19 @@ body {
 }
 
 
+/* HALAMAN 1 */
 /* hero pertama khusus tengah */
 .hero.hero-center h1 {
-  font-size: 35px;           /* ukuran judul */
+  font-size: 30px;           /* ukuran judul */
   font-family: 'Lora', serif;
   font-weight: bold;         /* tebal */
   margin-bottom: 15px;
 }
 .hero.hero-center h2 {
-  font-size: 20px;           /* ukuran judul */
+  font-size: 15px;           /* ukuran judul */
   font-family: 'Lora', serif;
   font-weight: normal;         /* tebal */
+ margin-top: 120px;
 
 }
 
@@ -101,7 +113,7 @@ body {
   font-weight: normal;         /* tebal */
 }
 .hero h3 {
-  font-size: 37px;           /* ukuran judul */
+  font-size: 27px;           /* ukuran judul */
   font-family: 'caitlin', serif;
   font-weight: bold;         /* tebal */
   margin-top: 10px;
@@ -109,10 +121,10 @@ body {
 }
 
 .hero p {
-  font-size: 15px;           /* ukuran paragraf */
+  font-size: 13px;           /* ukuran paragraf */
   font-family: 'Lora', serif;
   font-weight: normal;       /* tidak tebal */
-  margin-bottom: 6px;
+  margin-bottom: 0px;
 }
 
 /* bg 4 warna saja */
@@ -121,17 +133,23 @@ body {
   padding: 60px 20px;       /* jarak biar lega di atas bawah */
   text-align: center;
   background-color: #733A30; /* warna latar belakang polos */
+   padding: 100px;     /* Batas kiri dn kanan */
 }
 
+.hero-text h1 {              /* bg 2 */
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 28px;
+  color: #591E1F;
+}
 .hero-text h2 {
   font-size: 20px;
   font-weight: normal;
   margin-bottom: 28px;
   color: #FFF;
 }
-
 .hero-text p {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   margin-bottom: 12px;
   color: #FFF;
@@ -186,7 +204,7 @@ body {
 }
 
 .hero-left p {
-  font-size: 15px;           /* khusus bg5 */
+  font-size: 13px;           /* khusus bg5 */
   font-family: Lora, serif;
   font-weight: 400;          /* normal */
 }
@@ -400,7 +418,8 @@ section .content {
 
 
   <!-- ===== COVER SECTION ===== -->
-<section id="cover" class="cover hero" style="background-image:url('cover.png');">
+<section id="cover" class="cover hero" 
+                    style="background-image:url('cover.png');">
   <div class="content fade-up">
     <h2>THE WEDDING OF</h2>
     <br>
@@ -421,7 +440,9 @@ section .content {
 
 
 <!-- ===== Isi Undangan ===== -->
-<section class="hero hero-center" style="background-image:url('bg1.png');">
+<!-- ===== HALAMAN 1 ===== -->
+<section class="hero hero-center" 
+          style="background-image:url('bg1.png');">
   <div class="content fade-up">
     <h2>THE WEDDING OF</h2>
     <br>
@@ -435,20 +456,22 @@ section .content {
   </div>
 </section>
 
-<section class="hero" style="background-image:url('bg2.png');">
+<section class="hero hero-text" 
+          style="background-color:#FFF1E8;">
   <div class="content fade-up">
-    <p>"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
-    <p>Qs. Ar-Rum:21</p>
+    <h1>"Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+    </h1>
+    <h1>Qs. Ar-Rum:21</h1>
   </div>
 </section>
 
-<section class="hero" style="background-image:url('bg3.png');">
+<section class="hero" 
+        style="background-image:url('bg3.png');">
   <div class="content fade-up">
     <h2>BRIDE & GROOM</h2>
     <br>
-    <br>
-    <p>Assalamu'alaikum Wr. Wb.
-Maha Suci Allah yang telah menciptakan makhluk-Nya
+    <p>Assalamu'alaikum Wr. Wb.</p>
+    <p>Maha Suci Allah yang telah menciptakan makhluk-Nya
 berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah
 mengiringi pernikahan kami:</p>
     <br>
@@ -480,7 +503,8 @@ mengiringi pernikahan kami:</p>
 </section>
 
 <!-- ===== SECTION INFO ===== -->
-<section class="hero hero-text" style="background-color:#733A30;">
+<section class="hero hero-text" 
+          style="background-color:#733A30;">
   <div class="content fade-up">
     <h2>SAVE THE DATE</h2>
     <p>Dengan memohon rahmat dan ridho Allah SWT, kami
@@ -499,7 +523,8 @@ mengiringi pernikahan kami:</p>
 </section>
 
 
-<section class="hero" style="background-image:url('bg4.png');">
+<section class="hero" 
+          style="background-image:url('bg4.png');">
   <div class="content fade-up">
    <br>
    <br>
@@ -533,7 +558,8 @@ mengiringi pernikahan kami:</p>
   </div>
 </section>
 
-    <section class="hero hero-left" style="background-image:url('bg5.png');">
+    <section class="hero hero-left" 
+              style="background-image:url('bg5.png');">
   <div class="content fade-up">
     <h2>LOVE STORY</h2>
     <br>
@@ -550,7 +576,8 @@ mengiringi pernikahan kami:</p>
   </div>
 </section>
 
-   <section class="hero" style="background-image:url('bg6.png');">
+   <section class="hero" 
+            style="background-image:url('bg6.png');">
   <div class="content fade-up">
     <br>
     <br><br>
