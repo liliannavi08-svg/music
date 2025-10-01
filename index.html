@@ -18,20 +18,27 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; /* Tinggi penuh layar HP */
+  min-height: 100vh; /* selalu full layar */
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; /* gambar utuh */
-  
-  display: flex;
-  align-items: center;   /* Vertikal tengah */
-  justify-content: center; /* Horizontal tengah */
-  text-align: center;
+  background-size: contain; /* gambar utuh tidak terpotong */
+  background-color: #733A30; /* warna sisa belakang */
 
-  max-width: 600px;  /* Batas lebar teks */
-  margin: 0 auto;    /* Biar tetap ditengah */
-  padding: 160px;     /* Batas kiri dn kanan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
+
+.hero .content {
+  width: 100%;
+  max-width: 600px; /* batas teks supaya tidak melebar */
+  margin: 0 auto;
+}
+
+
+
 
 
 
@@ -130,14 +137,13 @@ body {
 /* bg 4 warna saja */
 .hero-text {
   min-height: auto;         /* tidak fixed fullscreen */
-  padding: 60px 20px;       /* jarak biar lega di atas bawah */
+  padding: 5px;       /* jarak biar lega di atas bawah */
   text-align: center;
   background-color: #733A30; /* warna latar belakang polos */
-   padding: 100px;     /* Batas kiri dn kanan */
 }
 
-.hero-text h1 {              /* bg 2 */
-  font-size: 15px;
+.hero-text h1 {              /* bg 2 = p*/
+  font-size: 13px;
   font-weight: normal;
   margin-bottom: 28px;
   color: #591E1F;
@@ -526,35 +532,48 @@ mengiringi pernikahan kami:</p>
 <section class="hero" 
           style="background-image:url('bg4.png');">
   <div class="content fade-up">
-   <br>
-   <br>
-   <br>
-   <br>
+    <br>
     <h2>AKAD NIKAH</h2>
-    <br>
-    <br>
+    <br><br>
     <p>KAMIS</p>
     <p>01</p>
     <p> JANUARI 2026</p>
     <p>08:00 WIB - SELESAI</p>
+    <br><br>
+    <h2>________***________</h2>
+    <br>
+    <p>LOKASI:</p>
+    <p>Masjid Istiqlal Jakarta</p>
+    <br><br>
     <!-- ICON MAPS -->
 <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="maps-icon">
   <img src="maps.png" alt="Lokasi" />
 </a>
+</div>
+</section>
+
+    <section class="hero" 
+          style="background-image:url('bg4.png');">
+  <div class="content fade-up">
     <br>
-    <br>
-    <br>
-    <h2>________***________</h2>
-    <h2>...............................................</h2>
     <br>
     <br>
     <h2>RESEPSI</h2>
-    <br>
-    <br>
+    <br><br>
     <p>KAMIS</p>
     <p>01</p>
     <p> JANUARI 2026</p>
     <p>08:00 WIB - SELESAI</p>
+    <br><br>
+    <h2>________***________</h2>
+    <br>
+    <p>LOKASI:</p>
+    <p>Masjid Istiqlal Jakarta</p>
+    <br><br>
+    <!-- ICON MAPS -->
+<a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="maps-icon">
+  <img src="maps.png" alt="Lokasi" />
+</a>
   </div>
 </section>
 
