@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Lora', serif;
+        color: #6B6848;
+        overflow-x: hidden;
+    }
+
+    /* ================= COVER ================= */
+    #cover {
+        height: 100vh;
+        background-image: url('Cover.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #6B6848;
+    }
+
+    .zoom {
+        opacity: 0;
+        transform: scale(0.8);
+        animation: zoomIn 1.2s ease forwards;
+    }
+    @keyframes zoomIn {
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .wedding-text { font-size: 20px; font-family: 'Lora', serif; margin-bottom:40px; }
+    .name-text { font-size: 40px; font-family: 'Great Vibes', cursive; }
+    .guest-title { font-size: 15px; margin-top: 15px; margin-top: 20px; }
+    .guest-sub-title { font-size: 15px; margin-top: 5px; font-weight: 600; }
+
+    .button {
+        margin-top: 25px;
+        background-color: #7C7A59;
+        color: white;
+        padding: 10px 25px;
+        font-size: 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family: 'Lora', serif;
+    }
+
+    /* ================= ANIMASI SLIDE-UP ================= */
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.slide-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    /* ========== ISI UNDANGAN ============ */
+    #content {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .section {
+        padding: 40px 25px;
+    }
+
+    /* BG doa */
+    .doa-bg {
+        background-color: #8E8A60;
+        color: white;
+        font-size: 12px;
+        line-height: 1.7;
+        padding: 30px 20px;
+        
+    }
+
+    /* BG mempelai – diperbaiki */
+.mempelai-section {
+    background-image: url('G2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    height: 100vh;              /* mengikuti BG1 */
+    padding: 0;                 /* hilangkan padding agar foto full */
+    margin: 0;
+    overflow: hidden;           /* cegah geser kanan kiri */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* tulisan mulai dari atas */
+    align-items: center;
+    text-align: center;
+    color: #6B6848;
+}
+
+.mempelai-inner {
+    width: 100%;
+    padding: 40px 25px;         /* isi tetap rapi */
+    box-sizing: border-box;
+}
+
+
+    .judul-mempelai {
+        font-size: 25px;
+        font-weight: 400;
+        margin-bottom: 0px;
+    }
+    
+    .mempelai-section h1{
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+    .mempelai-section h2{
+      font-size: 40px;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .mempelai-section p{
+      font-size: 14px;
+      max-width: 350px;
+    }
+    
+    .nama-mempelai {
+        font-size: 32px;
+        font-family: 'Great Vibes';
+        margin: 20px 0 10px;
+    }
+    
+    .btn-ig {
+        background: #7C7A59;
+        color: white;
+        padding: 8px 18px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    /* ===================== BG4 AKAD RESEPSI ===================== */
+    .acara-wrapper {
+        background-color: #8E8A60;
+        padding: 50px 0;
+    }
+    .acara-wrapper h1{
+      color: white;
+      font-size: 25px;
+      font-weight: 400;
+      margin-top: 0;
+    }
+    .acara-wrapper p{
+    color: white;
+    font-size: 14px;
+    max-width: 350px;
+    margin: 0 auto 15px;
+    }
+    .acara-box p{
+      color: #5a5946;
+    }
+
+    .acara-box {
+        width: 80%;
+        margin: auto;
+        background: white;
+        border-radius: 160px / 180px; /* lebih lonjong & ramping */
+        padding: 40px 25px;
+        background-image: url('G3.jpg');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        color: #5a5946;
+        border: 4px solid #5a543f; /* outline hijau tua */
+        font-size: 14px;
+    }
+
+    .acara-title {
+        font-size: 23px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    .garis {
+        width: 50%;
+        height: 1px;
+        background: #5a5946;
+        margin: 10px auto 20px;
+    }
+
+    .acara-tgl {
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .btn-lokasi {
+        background: #7C7A59;
+        color: white;
+        padding: 8px 18px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    /* === COUNTDOWN === */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.countdown-item {
+  background: #ffffff;
+  border: 2px solid #fff; 
+  border-radius: 18px;
+  padding: 10px 12px;
+  width: 60px;  /* ukuran box */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.count-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+  line-height: 1;
+}
+
+.count-label {
+  font-size: 11px;
+  margin-top: 4px;
+  color: #444;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ================= LIVE STREAMING BOX (IDENTIK SCREENSHOT) ================= */
+.streaming-section {
+    width: 100%;
+    padding: 40px 25px;
+    background-image: url('G3.jpg'); /* ganti dengan BG kamu */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #6B6848;
+    font-family: 'Lora', serif;
+}
+
+/* BOX OVAL PUTIH */
+.streaming-box {
+    width: 90%;
+    margin: auto;
+    background: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    padding: 20px 25px;
+    border: 4px solid #fff;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.7);
+    backdrop-filter: blur(3px);
+    
+    background-image: url('G3.jpg');
+        background-size: cover;
+        background-position: center;
+}
+
+/* Judul Live Streaming */
+.streaming-title {
+    font-size: 25px;
+    font-weight: 400;  /* ketebalan tulisan */
+    margin-bottom: 10px;
+    color: #6B6848;
+}
+
+/* Paragraf */
+.streaming-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #6B6848;
+}
+
+/* Tombol IG */
+.streaming-btn {
+    background: #7C7A59;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Love Story section bawah box */
+.story-title {
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: #6B6848;
+    
+}
+
+.story-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #6B6848;
+}
+
+.story-text {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 350px;
+    margin: auto;
+    color: #6B6848;
+}
+/* FIX LAYOUT AGAR TIDAK MELEBAR KE SAMPING */
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ========== WEDDING GIFT ========== */
+.wg-section {
+    background-color: #8E8A60;
+    padding: 30px 0;  /* jarak atas*/
+    text-align: center;
+    color: white;
+}
+
+/* Oval besar */
+.wg-oval {
+    width: 85%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 30px;   /* LENGKUNG BESAR SAMA SEPERTI FOTO */
+    padding: 4px 30px;
+    border: 4px solid #fff;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.7);
+    margin-bottom: 30px;
+
+
+    color: #5a5946;
+    background-size: cover;
+    background-position: center;
+    
+    background-image: url('G3.jpg');
+        background-size: cover;
+        background-position: center;
+}
+
+/* icon kado */
+.wg-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    filter: invert(0.3);
+}
+
+/* judul wedding gift */
+.wg-title-inside {
+    font-size: 23px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+/* Oval kecil rekening */
+.wg-inner-oval {
+    background: #f9f9f9;
+    border-radius: 10px / 15px;
+    padding: 5px 15px;
+    border: 2px solid #fff;
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+
+
+}
+
+/* baris rekening */
+.wg-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* logo bank */
+.wg-bank-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* text rekening */
+.wg-text {
+    font-size: 14px;
+    line-height: 1.35;
+    flex: 1;
+}
+
+/* icon copy */
+.wg-copy {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    filter: invert(0.4);
+}
+
+
+
+/* ================= RSVP ================= */
+/* BOX OVAL PUTIH */
+.rsvp-box {
+    width: 90%;
+    margin: auto;
+    background: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    padding: 20px 25px;
+    border: 4px solid #fff;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.7);
+    backdrop-filter: blur(3px);
+    
+    background-image: url('G3.jpg');
+        background-size: cover;
+        background-position: center;
+}
+
+/* Judul Live Streaming */
+.rsvp-title {
+    font-size: 25px;
+    font-weight: 400;  /* ketebalan tulisan */
+    margin-bottom: 10px;
+    color: #6B6848;
+}
+
+/* Paragraf */
+.rsvp-text {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #6B6848;
+}
+
+/* Tombol rsvp */
+.rsvp-btn {
+    background: #7C7A59;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+</style>
+
+<!-- Open Graph Meta Tags untuk WhatsApp / Link Preview -->
+<meta property="og:title" content="The Wedding of Deron & Levonka" />
+<meta property="og:description" content="Anda diundang untuk menghadiri acara pernikahan Deron & Levonka." />
+<meta property="og:image" content="https://example.com/Cover.jpg" />
+<meta property="og:url" content="https://example.com/undangan.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Undangan Pernikahan Deron & Levonka" />
+
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<div id="cover">
+    <div class="zoom wedding-text">The Wedding of</div>
+    <div class="zoom name-text" style="animation-delay:0.3s">Deron</div>
+    <div class="zoom name-text" style="animation-delay:0.6s">&amp;</div>
+    <div class="zoom name-text" style="animation-delay:0.9s">Levonka</div>
+
+    <div class="zoom guest-title" style="animation-delay:1.2s">Kepada Yth:</div>
+    <div class="zoom guest-sub-title" id="guestName" style="animation-delay:1.5s">Nama Tamu</div>
+
+    <a class="button zoom" style="animation-delay:1.8s" id="openBtn">Buka Undangan</a>
+</div>
+
+<!-- ================= ISI UNDANGAN ================= -->
+<div id="content">
+
+    <!-- BG1 Before DOA -->
+    <div class="bg1-section" style="position:relative; background-image:url('L.png'); background-size:cover; background-position:center; width:100%; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+        <div class="bg1-text" style="color:#6B6848; font-family:'Lora', serif; font-size:20px; margin-bottom: 50px;">The Wedding of</div>
+        <div class="bg1-text" style="color:#6B6848; font-family:'Great Vibes', cursive; font-size:50px; margin-top:10px;">Deron</div>
+        <div class="bg1-text" style="color:#6B6848; font-family:'Great Vibes', cursive; font-size:36px;">&</div>
+        <div class="bg1-text" style="color:#6B6848; font-family:'Great Vibes', cursive; font-size:50px;">Levonka</div>
+    </div>
+
+    <!-- BG DOA -->
+    <div class="doa-bg">
+        <p>Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
+    </div>
+
+    <!-- MEMPELAI -->
+    <div class="mempelai-section">
+        <div class="judul-mempelai"><br>Bride & Groom</div>
+
+        <p>Assalamu'alaikum Wr. Wb.<br>
+        Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami:</p>
+
+        <div class="nama-mempelai">Levonka</div>
+        <h1>Levonka Demina, S.Kom</h1>
+        <p>Putri kedua dari<br>Bapak Irsyam dan Ibu Virla</p>
+
+         <!-- Tambahkan ini di <head> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Lalu di body -->
+<a href="https://instagram.com/username" target="_blank" class="btn-lokasi">
+  <i class="fab fa-instagram"></i> Instagram
+</a>
+<h2>&</h2>
+
+        <div class="nama-mempelai">Deron</div>
+        <h1>Deron Smith, S.Kom</h1>
+        <p>Putra keempat dari<br>Bapak Sam Smith dan Ibu Velery</p>
+        <!-- Tambahkan ini di <head> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Lalu di body -->
+<a href="https://instagram.com/username" target="_blank" class="btn-lokasi">
+  <i class="fab fa-instagram"></i> Instagram
+</a>
+
+    </div>
+    
+
+    <!-- ================= BG4 AKAD & RESEPSI ================= -->
+    <div class="acara-wrapper">
+        <h1>Save The Date</h1>
+        <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara pernikahan kami:</p>
+        
+        <!-- Countdown -->
+        <div class="countdown">
+  <div class="countdown-item">
+    <div class="count-number" id="days">00</div>
+    <div class="count-label">Hari</div>
+  </div>
+
+  <div class="countdown-item">
+    <div class="count-number" id="hours">00</div>
+    <div class="count-label">Jam</div>
+  </div>
+
+  <div class="countdown-item">
+    <div class="count-number" id="minutes">00</div>
+    <div class="count-label">Menit</div>
+  </div>
+
+  <div class="countdown-item">
+    <div class="count-number" id="seconds">00</div>
+    <div class="count-label">Detik</div>
+  </div>
+</div>
+
+
+        <!-- OVAL BOX AKAD + RESEPSI -->
+        <div class="acara-box">
+            <div class="acara-title">Akad Nikah</div>
+            <div class="garis"></div>
+
+            <div class="acara-tgl">Minggu, 02 Februari 2026</div>
+            <p>Pukul : 08:00 WIB</p>
+            <p>Alamat : Kediaman mempelai wanita,<br>Bandung Jawa Barat</p>
+
+            <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">
+    <svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px;">
+        <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 
+        9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+    </svg>
+    Lokasi Acara
+</a>
+
+
+            <div style="height:45px"></div>
+            <p>----------*‐---------</p>
+
+            <div class="acara-title">Resepsi</div>
+            <div class="garis"></div>
+
+            <div class="acara-tgl">Minggu, 02 Februari 2026</div>
+            <p>Pukul : 08:00 WIB</p>
+            <p>Alamat : Kediaman mempelai wanita,<br>Bandung Jawa Barat</p>
+
+            <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">
+    <svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:6px;">
+        <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 
+        9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+    </svg>
+    Lokasi Acara
+</a>
+
+    </div>
+
+</div>
+
+        <!-- ================= BG LIVE STREAMING ================= -->
+<div class="streaming-section">
+
+    <div class="streaming-box">
+
+        <div class="streaming-title">Live Streaming</div>
+
+        <p class="streaming-text">
+            Temui kami secara virtual untuk menyaksikan acara pernikahan kami melalui
+            tautan di bawah ini:
+        </p>
+
+        <a href="https://instagram.com/levonka" target="_blank" class="streaming-btn">
+            <i class="fab fa-instagram"></i> @levonka
+        </a>
+
+    </div>
+
+    <!-- LOVE STORY di bawah box -->
+    <div class="story-title">Love Story</div>
+
+    <div class="story-subtitle">Awal Bertemu</div>
+    <p class="story-text">
+        Awal mengenal dimulai sejak duduk dibangku SMA namun saat itu kami tidak saling akrab.
+        Pada tahun 2019 kami mulai dekat dan saling mengenal satu sama lain.
+    </p>
+
+    <div class="story-subtitle">Lamaran</div>
+    <p class="story-text">
+        Setelah 4 tahun mengenal dekat kami berdua meyakini mampu melangkah ke jenjang yang lebih serius.
+        Pada 18 November 2023 kami pun resmi bertunangan dengan restu dari kedua orangtua dan keluarga besar.
+    </p>
+
+    <div class="story-subtitle">Pernikahan</div>
+    <p class="story-text">
+        Setelah 4 tahun mengenal dekat kami berdua meyakini mampu melangkah ke jenjang yang lebih serius.
+        Pada 18 November 2023 kami pun resmi bertunangan dengan restu dari kedua orangtua dan keluarga besar.
+    </p>
+
+</div>
+
+<!-- ================= WEDDING GIFT ================= -->
+<!-- ========== WEDDING GIFT ========== -->
+<div class="wg-section">
+
+    <div class="wg-oval">
+
+        <!-- ICON KADO SIMPLE PUTIH SEPERTI FOTO -->
+        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/gift.svg" class="wg-icon">
+
+        <!-- TULISAN WEDDING GIFT DI DALAM OVAL -->
+        <div class="wg-title-inside">Wedding Gift</div>
+
+        <!-- OVAL KECIL REKENING -->
+        <div class="wg-inner-oval">
+
+            <div class="wg-row">
+                
+                <!-- Logo bank kamu nanti ganti sendiri -->
+                <img src="Mandiri.png" class="wg-bank-logo">
+
+                <div class="wg-text">
+                    <b>1234 5678 9012</b><br>
+                    a.n. Levonka Demina
+                </div>
+
+                <!-- Icon copy -->
+                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/clipboard.svg"
+                     class="wg-copy"
+                     onclick="copyRek('123456789012')">
+
+            </div>
+
+        </div>
+        
+        <!-- OVAL KECIL REKENING -->
+        <div class="wg-inner-oval">
+
+            <div class="wg-row">
+                
+                <!-- Logo bank kamu nanti ganti sendiri -->
+                <img src="Mandiri.png" class="wg-bank-logo">
+
+                <div class="wg-text">
+                    <b>1234 5678 9012</b><br>
+                    a.n. Levonka Demina
+                </div>
+
+                <!-- Icon copy -->
+                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/clipboard.svg"
+                     class="wg-copy"
+                     onclick="copyRek('123456789012')">
+
+            </div>
+
+    </div>
+    <h3>Kirim Kado</h3>
+            <p>Nama penerima : Levonka <br>
+            Nomor Hp : 0804765897 <br>
+            Jalan Melati 04 RT.07 Bandung</p>
+
+</div>
+            <section class="rsvp-oval">
+        <div class="rsvp-section">
+
+    <div class="rsvp-box">
+
+        <div class="rsvp-title">RSVP</div>
+
+        <p class="rsvp-text">
+            Kirim ucapa terbaik<br> untuk kedua mempelai:
+        </p>
+
+        <a href="https://liliannavi08-svg.github.io/undangan/Rsvp%20publik" target="_blank" class="rsvp-btn">
+             Klik disini
+        </a>
+
+    </div>
+
+
+</section>
+
+
+    </div>
+
+</div>
+
+
+<script>
+// Ambil nama tamu dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const to = urlParams.get('to');
+if(to){ document.getElementById('guestName').textContent = to; }
+
+// Tombol buka undangan
+const openBtn = document.getElementById('openBtn');
+openBtn.onclick = function(){
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    document.body.style.overflow = 'auto';
+    document.getElementById('bgMusic').play().catch(()=>{});
+};
+
+// COUNTDOWN
+const targetDate = new Date("2026-02-02T00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  document.getElementById("days").innerText    = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  document.getElementById("minutes").innerText = Math.floor((diff / (1000 * 60)) % 60);
+  document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
+}, 1000);
+
+// Animasi scroll
+document.addEventListener('DOMContentLoaded', () => {
+
+    // PERBAIKAN PENTING:
+    // Selector lama ada yang salah (contoh: "rsvp-title", "rsvp-oval" tanpa titik)
+    const selectors = [
+        '#content .section',
+        '#content .mempelai-section',
+        '#content .acara-wrapper',
+        '#content .doa-bg',
+        '#content .acara-box',
+        '#content .bg1-section',
+        '.wg-section',
+        '.wg-oval',
+        '.wg-inner-oval',
+        '.streaming-section',
+        '.story-title',
+        '.rsvp-title',
+        '.rsvp-section',
+        '.rsvp-box',
+        '.rsvp-btn',
+        '.rsvp-oval'
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const children = Array.from(entry.target.children);
+            if(entry.isIntersecting){
+                children.forEach((child, index) => {
+                    setTimeout(() => child.classList.add('show'), index * 200);
+                });
+            } else {
+                children.forEach(child => child.classList.remove('show'));
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(selectors.join(',')).forEach(el => {
+        if(!el.children.length){
+            const wrap = document.createElement('span');
+            wrap.textContent = el.textContent;
+            el.textContent = '';
+            el.appendChild(wrap);
+        }
+        Array.from(el.children).forEach(child => child.classList.add('slide-up'));
+        observer.observe(el);
+    });
+
+});
+
+// Copy rekening
+function copyRek(no){
+    navigator.clipboard.writeText(no);
+    alert("Nomor rekening disalin!");
+}
+
+
+
+
+
+
+
+</script>
+
+<audio id="bgMusic" loop>
+  <source src="Pernikahan.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
