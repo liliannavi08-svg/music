@@ -6,6 +6,7 @@
 <title>Undangan Pernikahan</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 body {
     margin: 0;
@@ -319,6 +320,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const to = urlParams.get('to');
 if(to){ document.getElementById('guestName').textContent = to; }
 
+
+
+// Preload L.png agar langsung muncul, tidak loading
+const preloadL = new Image();
+preloadL.src = 'L.png';
+
+
 // Tombol buka undangan
 document.getElementById('openBtn').onclick = function(){
     document.getElementById('cover').style.display = 'none';
@@ -361,9 +369,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Copy rekening
-function copyRek(no){ navigator.clipboard.writeText(no); alert("Nomor rekening disalin!"); }
+// Copy rekening dengan notif
+function copyRek(no){
+    navigator.clipboard.writeText(no).then(() => {
+        const notif = document.getElementById('copyNotif');
+        notif.style.display = 'block';
+        setTimeout(() => { notif.style.display = 'none'; }, 1500);
+    });
+}
 </script>
+
+<div id="copyNotif" style="
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7C7A59;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: none;
+    z-index: 9999;
+">Disalin</div>
 
 </body>
 </html>
