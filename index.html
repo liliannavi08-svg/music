@@ -56,7 +56,7 @@ body {
 /* ================= ANIMASI SLIDE-UP ================= */
 .slide-up {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(100px);
     transition: all 0.8s ease-out;
 }
 .slide-up.show {
@@ -165,6 +165,91 @@ body {
 
 * { box-sizing: border-box; }
 body, html { max-width: 100%; overflow-x: hidden; }
+
+/* ================= THANK YOU SECTION ================= */
+.thanks-section {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #8E8A60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: #5a5946;
+    padding: 20px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.thanks-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;  /* FIX DI SINI */
+}
+
+.thanks-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 20px;
+    color: #5a5946;
+}
+
+.thanks-text h1 {
+    font-size: 50px;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: -10px;
+    font-weight: 400;
+}
+
+.thanks-text p {
+    font-size: 17px;
+    font-family: 'Lora', serif;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+/* FOOTER */
+.footer-section {
+    background: #7C7A59; /* ubah sesuai selera */
+    padding: 30px 20px;
+    text-align: center;
+    color: white;
+    margin: 0; 
+}
+
+.footer-logo {
+    width: 80px; /* sesuaikan ukuran */
+    margin-bottom: none;
+    margin-top: none;
+}
+
+.made {
+    font-size: 12px; /* ukuran tulisan */
+    margin-bottom: 15px;
+}
+
+.footer-icons a {
+    margin: 0 10px;
+    font-size: 17px; /* ukuran logo */
+    color: white; /* -> ubah warna icon di sini */
+    transition: 0.3s;
+}
+
+.footer-icons a:hover {
+    opacity: 0.7;
+}
+
 </style>
 
 <meta property="og:title" content="The Wedding of Deron & Levonka" />
@@ -237,7 +322,11 @@ body, html { max-width: 100%; overflow-x: hidden; }
             <div class="acara-tgl">Minggu, 02 Februari 2026</div>
             <p>Pukul : 08:00 WIB</p>
             <p>Alamat : Kediaman mempelai wanita,<br>Bandung Jawa Barat</p>
-            <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">Lokasi Acara</a>
+            <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">
+    <i class="fas fa-location-dot"></i> Lokasi Acara
+</a>
+
+
 
             <div style="height:45px"></div>
             <p>----------*‐---------</p>
@@ -247,7 +336,10 @@ body, html { max-width: 100%; overflow-x: hidden; }
             <div class="acara-tgl">Minggu, 02 Februari 2026</div>
             <p>Pukul : 08:00 WIB</p>
             <p>Alamat : Kediaman mempelai wanita,<br>Bandung Jawa Barat</p>
-            <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">Lokasi Acara</a>
+           <a href="https://www.google.com/maps?q=-6.200000,106.816666" target="_blank" class="btn-lokasi">
+    <i class="fas fa-location-dot"></i> Lokasi Acara
+</a>
+
         </div>
     </div>
 
@@ -303,11 +395,45 @@ body, html { max-width: 100%; overflow-x: hidden; }
             <div class="rsvp-box">
                 <div class="rsvp-title">RSVP</div>
                 <p class="rsvp-text">Kirim ucapa terbaik<br> untuk kedua mempelai:</p>
-                <a href="https://liliannavi08-svg.github.io/music/Rsvp%20publik" target="_blank" class="rsvp-btn">Klik disini</a>
+                <a href="https://lumieraid.github.io/music/rsvp.html"
+ target="_blank" class="rsvp-btn">Klik disini</a>
             </div>
         </section>
     </div>
+    
+<!-- TERIMA KASIH -->    
+<section class="thanks-section">
+    <img src="G4.png" class="thanks-bg slide-up">
 
+    <div class="thanks-text slide-up">
+        <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>
+        apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami</p><br><br>
+        <h3>Hormat Kami</h3>
+        <h1>Deron & levonka</h1>
+    </div>
+</section>
+
+
+            <!-- FOOTER -->
+            <footer class="footer-section">
+            <img src="Logo.png" class="footer-logo" alt="Logo">
+
+            <p class="made">Made with ♥️ by LumiEra</p>
+
+             <div class="footer-icons">
+         <a href="https://instagram.com/lumiera_8" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://wa.me/6282255603601" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="mailto:viviaann1233@gmail.com" target="_blank">
+            <i class="fas fa-envelope"></i>
+        </a>
+        </div>
+        </footer>
 </div>
 
 <audio id="bgMusic" loop>
@@ -348,7 +474,7 @@ setInterval(() => {
 
 // Scroll Animasi
 document.addEventListener('DOMContentLoaded', () => {
-    const selectors = ['#content .section', '#content .mempelai-section', '#content .acara-wrapper', '#content .doa-bg', '#content .acara-box', '#content .bg1-section', '.wg-section', '.wg-oval', '.wg-inner-oval', '.streaming-section', '.story-title', '.rsvp-title', '.rsvp-section'];
+    const selectors = ['#content .section', '#content .mempelai-section', '#content .acara-wrapper', '#content .doa-bg', '#content .acara-box', '#content .bg1-section', '.wg-section', '.wg-oval', '.wg-inner-oval', '.streaming-section', '.story-title', '.rsvp-title', '.rsvp-section', '.rsvp-oval', '.rsvp-box', '.thanks-section', '.thanks-text', '.thanks-bg'];
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const children = Array.from(entry.target.children);
@@ -377,6 +503,19 @@ function copyRek(no){
         setTimeout(() => { notif.style.display = 'none'; }, 1500);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+});
+
 </script>
 
 <div id="copyNotif" style="
