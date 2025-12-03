@@ -175,8 +175,8 @@
     // Simpan ke Firebase
     const form = document.getElementById("rsvpForm");
     const commentsDiv = document.getElementById("comments");
-    const rsvpRef = ref(db, "rsvp");
-
+    const rsvpRef = ref(db, "rsvp"); /* HARUS DIGANTI DB RSVP */
+    
     form.addEventListener("submit", e => {
       e.preventDefault();
       const data = {

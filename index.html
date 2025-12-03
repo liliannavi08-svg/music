@@ -13,6 +13,14 @@ body {
     font-family: 'Lora', serif;
     color: #6B6848;
     overflow-x: hidden;
+    
+    /* ========== BG BELAKANG ========== */
+    margin: 0;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* penting */
 }
 
 /* ================= COVER ================= */
@@ -56,7 +64,7 @@ body {
 /* ================= ANIMASI SLIDE-UP ================= */
 .slide-up {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(50px);
     transition: all 0.8s ease-out;
 }
 .slide-up.show {
@@ -170,54 +178,37 @@ body, html { max-width: 100%; overflow-x: hidden; }
 .thanks-section {
     width: 100%;
     height: 100vh;
+    background-image: transparent; /* ganti sesuai nama gambar kamu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #8E8A60;
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 
-    color: #5a5946;
+    color: #5a5946; /* Warna teks */
     padding: 20px;
-
-    position: relative;
-    overflow: hidden;
 }
-
-.thanks-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;  /* FIX DI SINI */
-}
-
 .thanks-text {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 80px 20px;
-    color: #5a5946;
+    background: rgba(255,255,255,0.40);
+    backdrop-filter: blur(1px);
+    padding: 25px 30px;
+    border-radius: 50px;
+    box-shadow: 0 0 50px rgba(255,255,255,0.9);
 }
 
 .thanks-text h1 {
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Great Vibes', cursive;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
     margin-top: -10px;
-    font-weight: 400;
 }
-
 .thanks-text p {
     font-size: 17px;
-    font-family: 'Lora', serif;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Lora', serif;;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-
 
 /* FOOTER */
 .footer-section {
@@ -401,19 +392,14 @@ body, html { max-width: 100%; overflow-x: hidden; }
         </section>
     </div>
     
-<!-- TERIMA KASIH -->    
-<section class="thanks-section">
-    <img src="G4.png" class="thanks-bg slide-up">
-
-    <div class="thanks-text slide-up">
-        <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>
-        apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami</p><br><br>
-        <h3>Hormat Kami</h3>
-        <h1>Deron & levonka</h1>
+        <!-- THANK YOU SECTION -->
+<div class="thanks-section">
+    <div class="thanks-text">
+        <p>Merupakan suatu kehormatan<br> dan kebahagiaan bagi kami
+          apabila Bapak/Ibu/Saudara/i berkenan hadir<br>dan memberikan doa restu kepada kedua mempelai<br><br><br></p><h3>Hormat Kami</h3>
+        <h1>Deron & Levonka</h1>
     </div>
-</section>
-
-
+</div>
             <!-- FOOTER -->
             <footer class="footer-section">
             <img src="Logo.png" class="footer-logo" alt="Logo">
@@ -474,7 +460,7 @@ setInterval(() => {
 
 // Scroll Animasi
 document.addEventListener('DOMContentLoaded', () => {
-    const selectors = ['#content .section', '#content .mempelai-section', '#content .acara-wrapper', '#content .doa-bg', '#content .acara-box', '#content .bg1-section', '.wg-section', '.wg-oval', '.wg-inner-oval', '.streaming-section', '.story-title', '.rsvp-title', '.rsvp-section', '.rsvp-oval', '.rsvp-box', '.thanks-section', '.thanks-text', '.thanks-bg'];
+    const selectors = ['#content .section', '#content .mempelai-section', '#content .acara-wrapper', '#content .doa-bg', '#content .acara-box', '#content .bg1-section', '.wg-section', '.wg-oval', '.wg-inner-oval', '.streaming-section', '.story-title', '.rsvp-title', '.rsvp-section', '.rsvp-oval', '.rsvp-box', '.thanks-section', '.thanks-text'];
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const children = Array.from(entry.target.children);
@@ -503,19 +489,6 @@ function copyRek(no){
         setTimeout(() => { notif.style.display = 'none'; }, 1500);
     });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-            }
-        });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
-});
-
 </script>
 
 <div id="copyNotif" style="
